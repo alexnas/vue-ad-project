@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-navigation-drawer app temporary="false" v-model="drawer">
+    <v-navigation-drawer v-model="drawer" app temporary="false">
       <v-list>
         <v-list-item v-for="link of links" :key="link.title" :to="link.url">
           <v-list-item-icon>
@@ -15,7 +15,10 @@
     </v-navigation-drawer>
 
     <v-app-bar dark color="primary" app>
-      <v-app-bar-nav-icon @click="drawer = !drawer" class="hidden-md-and-up"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon
+        class="hidden-md-and-up"
+        @click="drawer = !drawer"
+      ></v-app-bar-nav-icon>
       <v-toolbar-title>Ad Service</v-toolbar-title>
       <v-spacer></v-spacer>
 
@@ -50,5 +53,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>
