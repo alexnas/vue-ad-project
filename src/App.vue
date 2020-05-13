@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-navigation-drawer v-model="drawer" app temporary="false">
+    <v-navigation-drawer v-model="drawer" app temporary>
       <v-list>
         <v-list-item v-for="link of links" :key="link.title" :to="link.url">
           <v-list-item-icon>
