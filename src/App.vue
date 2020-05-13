@@ -19,7 +19,11 @@
         class="hidden-md-and-up"
         @click="drawer = !drawer"
       ></v-app-bar-nav-icon>
-      <v-toolbar-title>Ad Service</v-toolbar-title>
+      <v-toolbar-title>
+        <router-link to="/" tag="span" class="pointer"
+          >Ad Application</router-link
+        >
+      </v-toolbar-title>
       <v-spacer></v-spacer>
 
       <v-toolbar-items class="hidden-sm-and-down">
@@ -53,4 +57,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.pointer {
+  cursor: pointer;
+}
+</style>
