@@ -74,9 +74,12 @@ export default {
         const ad = {
           title: this.title,
           description: this.description,
-          promo: this.promo
+          promo: this.promo,
+          imageSrc:
+            "https://weatherless.ru/wp-content/uploads/2017/03/vuejs-logo.jpg"
         };
         console.log("ad", ad);
+        this.$store.dispatch("createAd", ad);
       }
     }
   }
