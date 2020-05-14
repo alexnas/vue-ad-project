@@ -24,14 +24,9 @@
     </v-navigation-drawer>
 
     <v-app-bar dark color="primary" app>
-      <v-app-bar-nav-icon
-        class="hidden-md-and-up"
-        @click="drawer = !drawer"
-      ></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon class="hidden-md-and-up" @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>
-        <router-link to="/" tag="span" class="pointer"
-          >Ad Application</router-link
-        >
+        <router-link to="/" tag="span" class="pointer">Ad Application</router-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
 
@@ -42,8 +37,7 @@
         </v-btn>
 
         <v-btn text @click="onLogout" v-if="isUserLoggedIn">
-          <v-icon left>mdi-exit-to-app</v-icon>
-          Logout
+          <v-icon left>mdi-exit-to-app</v-icon>Logout
         </v-btn>
       </v-toolbar-items>
     </v-app-bar>
@@ -52,7 +46,7 @@
       <router-view></router-view>
     </v-content>
 
-    <v-template v-if="error">
+    <template v-if="error">
       <v-snackbar
         color="error"
         :multi-line="true"
@@ -62,11 +56,9 @@
       >
         {{ error }}
         <v-spacer></v-spacer>
-        <v-btn text dark @click.native="closeError">
-          Close
-        </v-btn>
+        <v-btn text dark @click.native="closeError">Close</v-btn>
       </v-snackbar>
-    </v-template>
+    </template>
   </v-app>
 </template>
 

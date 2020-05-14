@@ -31,24 +31,22 @@
         </v-layout>
         <v-layout row>
           <v-flex xs12>
-            <img src="" height="100" />
+            <img src height="100" />
           </v-flex>
         </v-layout>
         <v-layout row>
           <v-flex xs12>
-            <v-switch
-              v-model="promo"
-              class="mx-2"
-              label="Add to promo"
-              color="primary"
-            ></v-switch>
+            <v-switch v-model="promo" class="mx-2" label="Add to promo" color="primary"></v-switch>
           </v-flex>
         </v-layout>
         <v-layout row>
           <v-flex xs12>
-            <v-btn :disabled="!valid" class="success" @click="createAd">
-              Create ad
-            </v-btn>
+            <v-btn
+              :loading="loading"
+              :disabled="!valid || loading"
+              class="success"
+              @click="createAd"
+            >Create ad</v-btn>
           </v-flex>
         </v-layout>
       </v-flex>
@@ -66,6 +64,11 @@ export default {
       valid: false
     };
   },
+  computed: {
+    loading() {
+      return this.$store.getters.loading;
+    }
+  },
   methods: {
     createAd() {
       if (this.$refs.form.validate()) {
@@ -76,7 +79,12 @@ export default {
           imageSrc:
             "https://weatherless.ru/wp-content/uploads/2017/03/vuejs-logo.jpg"
         };
-        this.$store.dispatch("createAd", ad);
+        this.$store
+          .dispatch("createAd", ad)
+          .then(() => {
+            this.$router.push("/");
+          })
+          .catch(() => {});
       }
     }
   }
