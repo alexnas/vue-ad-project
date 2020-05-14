@@ -68,9 +68,7 @@ export default {
   },
   methods: {
     createAd() {
-      console.log("createAd");
       if (this.$refs.form.validate()) {
-        // logic
         const ad = {
           title: this.title,
           description: this.description,
@@ -78,7 +76,6 @@ export default {
           imageSrc:
             "https://weatherless.ru/wp-content/uploads/2017/03/vuejs-logo.jpg"
         };
-        console.log("ad", ad);
         this.$store.dispatch("createAd", ad);
       }
     }

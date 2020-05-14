@@ -92,7 +92,6 @@ export default {
           email: this.email,
           password: this.password
         };
-        console.log("validated == ", user);
         this.$store
           .dispatch("registerUser", user)
           .then(() => {
