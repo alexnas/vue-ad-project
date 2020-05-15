@@ -1,14 +1,10 @@
 <template>
-  <div>
+  <div v-if="!loading">
     <v-container fluid>
       <v-layout row>
         <v-flex xs12>
           <v-carousel>
-            <v-carousel-item
-              v-for="ad in promoAds"
-              :key="ad.id"
-              :src="ad.imageSrc"
-            >
+            <v-carousel-item v-for="ad in promoAds" :key="ad.id" :src="ad.imageSrc">
               <div class="car-link">
                 <v-btn class="error" :to="'/ad/' + ad.id">{{ ad.title }}</v-btn>
               </div>
@@ -21,12 +17,7 @@
       <v-layout row wrap>
         <v-flex xs12 sm6 md4 v-for="ad in ads" :key="ad.id">
           <v-card width="auto">
-            <v-img
-              class="white--text align-end"
-              height="200px"
-              :src="ad.imageSrc"
-            >
-            </v-img>
+            <v-img class="white--text align-end" height="200px" :src="ad.imageSrc"></v-img>
             <v-card-title primary-title>
               <div>
                 <h3 class="headline mb-0">{{ ad.title }}</h3>
@@ -39,18 +30,23 @@
 
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn text :to="'/ad/' + ad.id">
-                Open
-              </v-btn>
+              <v-btn text :to="'/ad/' + ad.id">Open</v-btn>
 
-              <v-btn raised class="primary">
-                Buy
-              </v-btn>
+              <v-btn raised class="primary">Buy</v-btn>
             </v-card-actions>
           </v-card>
         </v-flex>
       </v-layout>
     </v-container>
+  </div>
+  <div v-else>
+    <container>
+      <v-layout row>
+        <v-flex xs12 class="text-center pt-5">
+          <v-progress-circular :size="100" :width="10" color="#d595e0" indeterminate></v-progress-circular>
+        </v-flex>
+      </v-layout>
+    </container>
   </div>
 </template>
 
@@ -62,6 +58,9 @@ export default {
     },
     ads() {
       return this.$store.getters.ads;
+    },
+    loading() {
+      return this.$store.getters.loading;
     }
   }
 };

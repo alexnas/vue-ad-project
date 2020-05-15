@@ -6,9 +6,7 @@
           <v-img :src="ad.imageSrc" height="300px"></v-img>
           <v-card-text>
             <h1 class="text-primary">{{ ad.title }}</h1>
-            <p>
-              {{ ad.description }}
-            </p>
+            <p>{{ ad.description }}</p>
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>

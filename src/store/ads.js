@@ -20,33 +20,14 @@ class Ad {
 
 export default {
   state: {
-    ads: [
-      {
-        title: "First ad",
-        description: "Hello this is a first picture",
-        promo: false,
-        imageSrc: "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg",
-        id: "123"
-      },
-      {
-        title: "Second ad",
-        description: "Somebody knows",
-        promo: true,
-        imageSrc: "https://cdn.vuetifyjs.com/images/carousel/planet.jpg",
-        id: "124"
-      },
-      {
-        title: "Third ad",
-        description: "Porque no",
-        promo: true,
-        imageSrc: "https://cdn.vuetifyjs.com/images/carousel/bird.jpg",
-        id: "125"
-      }
-    ]
+    ads: []
   },
   mutations: {
     createAd(state, payload) {
       state.ads.push(payload);
+    },
+    loadAds(state, payload) {
+      state.ads = payload;
     }
   },
   actions: {
@@ -55,7 +36,6 @@ export default {
       commit("setLoading", true);
 
       try {
-        // new Ad(
         const newAd = new Ad(
           payload.title,
           payload.description,
@@ -69,13 +49,46 @@ export default {
           .ref("ads")
           .push(newAd);
 
-        // console.log("ad", ad);
-
         commit("setLoading", false);
         commit("createAd", {
           ...newAd,
           id: ad.key
         });
+      } catch (error) {
+        commit("setError", error.message);
+        commit("setLoading", false);
+        throw error;
+      }
+    },
+    async fetchAds({ commit }) {
+      commit("clearError");
+      commit("setLoading", true);
+
+      let resultAds = [];
+
+      try {
+        const fbVal = await fb
+          .database()
+          .ref("ads")
+          .once("value");
+        const ads = fbVal.val();
+
+        Object.keys(ads).forEach(key => {
+          const ad = ads[key];
+          resultAds.push(
+            new Ad(
+              ad.title,
+              ad.description,
+              ad.ownerI,
+              ad.imageSrc,
+              ad.promo,
+              key
+            )
+          );
+        });
+
+        commit("loadAds", resultAds);
+        commit("setLoading", false);
       } catch (error) {
         commit("setError", error.message);
         commit("setLoading", false);
