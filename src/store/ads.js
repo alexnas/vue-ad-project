@@ -155,7 +155,7 @@ export default {
       return state.ads.filter(ad => ad.promo);
     },
     myAds(state, getters) {
-      return state.ads.filter(ad => ad.ownerId === getters.user.id); // TODO: to filter by user later
+      return state.ads.filter(ad => ad.ownerId === getters.user.id);
     },
     adById(state) {
       return adId => {

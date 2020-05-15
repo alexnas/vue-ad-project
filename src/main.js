@@ -6,8 +6,10 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import vuetify from "./plugins/vuetify";
+import BuyModalComponent from "./components/Shared/BuyModal";
 
 Vue.config.productionTip = false;
+Vue.component("app-buy-modal", BuyModalComponent);
 
 new Vue({
   router,
