@@ -58,11 +58,11 @@ export default {
     },
     onSave() {
       if (
-        !this.editedTitle.strip() !== "" &&
-        this.editedDescription.strip() !== ""
+        !this.editedTitle.trim() !== "" &&
+        this.editedDescription.trim() !== ""
       ) {
         this.$store.dispatch("updateAd", {
-          title: this.editTitle,
+          title: this.editedTitle,
           description: this.editedDescription,
           id: this.ad.id
         });

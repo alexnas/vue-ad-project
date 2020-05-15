@@ -28,6 +28,11 @@ export default {
     },
     loadAds(state, payload) {
       state.ads = payload;
+    },
+    updateAd(state, { title, description, id }) {
+      const updatedAd = state.ads.find(ad => ad.id === id);
+      updatedAd.title = title;
+      updatedAd.description = description;
     }
   },
   actions: {
@@ -117,6 +122,29 @@ export default {
         commit("setLoading", false);
         throw error;
       }
+    },
+    async updateAd({ commit }, { title, description, id }) {
+      commit("clearError");
+      commit("setLoading", true);
+
+      try {
+        await fb
+          .database()
+          .ref("ads")
+          .child(id)
+          .update({ title, description });
+
+        commit("updateAd", {
+          title,
+          description,
+          id
+        });
+        commit("setLoading", false);
+      } catch (error) {
+        commit("setError", error.message);
+        commit("setLoading", false);
+        throw error;
+      }
     }
   },
   getters: {
@@ -126,8 +154,8 @@ export default {
     promoAds(state) {
       return state.ads.filter(ad => ad.promo);
     },
-    myAds(state) {
-      return state.ads; // TODO: to filter by user later
+    myAds(state, getters) {
+      return state.ads.filter(ad => ad.ownerId === getters.user.id); // TODO: to filter by user later
     },
     adById(state) {
       return adId => {
