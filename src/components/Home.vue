@@ -40,13 +40,13 @@
     </v-container>
   </div>
   <div v-else>
-    <container>
+    <v-container>
       <v-layout row>
         <v-flex xs12 class="text-center pt-5">
           <v-progress-circular :size="100" :width="10" color="#d595e0" indeterminate></v-progress-circular>
         </v-flex>
       </v-layout>
-    </container>
+    </v-container>
   </div>
 </template>
 
