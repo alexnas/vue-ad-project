@@ -17,15 +17,7 @@ new Vue({
   vuetify,
   render: h => h(App),
   created() {
-    fb.initializeApp({
-      apiKey: "FakeApi",
-      authDomain: "ads-wwwwwwww.ffffffffff.com",
-      databaseURL: "https://ads-wwwwwwww.ffffffffffff.com",
-      projectId: "ads-wwwwwwww",
-      storageBucket: "ads-wwwwwwww.aaaaaaa.com",
-      messagingSenderId: "123123123213",
-      appId: "1:948753759835:www:987o54l5kj3lk4fakeapi"
-    });
+    fb.initializeApp(fbApi);
 
     fb.auth().onAuthStateChanged(user => {
       if (user) {
