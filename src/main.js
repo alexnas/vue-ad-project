@@ -18,13 +18,13 @@ new Vue({
   render: h => h(App),
   created() {
     fb.initializeApp({
-      apiKey: "AIzaSyAv_GtbVVx2kJUvjINh3U0uNLhsc_YQ2vY",
-      authDomain: "vue-ads-project-a1dff.firebaseapp.com",
-      databaseURL: "https://vue-ads-project-a1dff.firebaseio.com",
-      projectId: "vue-ads-project-a1dff",
-      storageBucket: "vue-ads-project-a1dff.appspot.com",
-      messagingSenderId: "598665661834",
-      appId: "1:598665661834:web:5c9cb62e0aa27758eccc73"
+      apiKey: "FakeApi",
+      authDomain: "ads-wwwwwwww.ffffffffff.com",
+      databaseURL: "https://ads-wwwwwwww.ffffffffffff.com",
+      projectId: "ads-wwwwwwww",
+      storageBucket: "ads-wwwwwwww.aaaaaaa.com",
+      messagingSenderId: "123123123213",
+      appId: "1:948753759835:www:987o54l5kj3lk4fakeapi"
     });
 
     fb.auth().onAuthStateChanged(user => {
