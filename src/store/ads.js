@@ -9,12 +9,12 @@ class Ad {
     promo = false,
     id = null
   ) {
-    (this.title = title),
-      (this.description = description),
-      (this.ownerId = ownerId),
-      (this.imageSrc = imageSrc),
-      (this.promo = promo),
-      (this.id = id);
+    this.title = title;
+    this.description = description;
+    this.ownerId = ownerId;
+    this.imageSrc = imageSrc;
+    this.promo = promo;
+    this.id = id;
   }
 }
 
