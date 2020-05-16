@@ -107,7 +107,7 @@ export default {
             new Ad(
               ad.title,
               ad.description,
-              ad.ownerI,
+              ad.ownerId,
               ad.imageSrc,
               ad.promo,
               key

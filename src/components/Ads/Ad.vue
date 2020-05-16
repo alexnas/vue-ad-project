@@ -42,7 +42,10 @@ export default {
       return this.$store.getters.loading;
     },
     isOwner() {
-      return this.ad.isOwner === this.$store.getters.user.id;
+      return (
+        this.$store.getters.user &&
+        this.ad.ownerId === this.$store.getters.user.id
+      );
     }
   },
   components: {
